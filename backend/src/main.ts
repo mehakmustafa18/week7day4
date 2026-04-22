@@ -1,31 +1,42 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
 import { ExpressAdapter } from '@nestjs/platform-express';
+import { AppModule } from './app.module';
 import express from 'express';
 
 const expressApp = express();
+let isInitialized = false;
 
 async function bootstrap() {
+  if (isInitialized) return expressApp;
+
   const app = await NestFactory.create(
     AppModule,
     new ExpressAdapter(expressApp),
   );
 
   app.enableCors({
-    origin: [
-      process.env.FRONTEND_URL,
-      'http://localhost:3000',
-      'http://localhost:3001',
-      'http://localhost:3002',
-      'https://your-frontend.vercel.app', // apna frontend URL yahan daalo
-    ],
+    origin: '*',
     methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
-    credentials: true,
+    credentials: false,
   });
 
-  const port = process.env.PORT ?? 4000;
-  await app.listen(port);
-  console.log(`🚀 Backend running on http://localhost:${port}`);
+  await app.init();
+  isInitialized = true;
+  return expressApp;
 }
 
-bootstrap();
+// Local dev
+if (process.env.NODE_ENV !== 'production') {
+  bootstrap().then((app) => {
+    const port = process.env.PORT ?? 4000;
+    app.listen(port, () => {
+      console.log(`🚀 Backend running on http://localhost:${port}`);
+    });
+  });
+}
+
+// Vercel serverless export
+export default async (req: express.Request, res: express.Response) => {
+  const app = await bootstrap();
+  app(req, res);
+};
