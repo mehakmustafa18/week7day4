@@ -1,0 +1,122 @@
+# ===========================
+# NestJS
+# ===========================
+dist/
+build/
+
+# ===========================
+# Node.js
+# ===========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+
+# ===========================
+# Environment Variables
+# ===========================
+.env
+.env.*
+!.env.example
+
+# ===========================
+# TypeScript
+# ===========================
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+tsconfig.build.tsbuildinfo
+
+# ===========================
+# Hygraph / GraphQL
+# ===========================
+__generated__/
+*.graphql.d.ts
+graphql.schema.json
+schema.graphql
+
+# ===========================
+# Database / ORM
+# ===========================
+prisma/migrations/dev/
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+
+# ===========================
+# Cart / Session Storage
+# ===========================
+cart-sessions/
+sessions/
+
+# ===========================
+# Logs
+# ===========================
+logs/
+*.log
+loglevel-*.log
+
+# ===========================
+# Testing
+# ===========================
+coverage/
+.nyc_output/
+test-results/
+
+# ===========================
+# Cache & Temp
+# ===========================
+.cache/
+.turbo/
+.eslintcache
+*.tmp
+*.temp
+.temp/
+.tmp/
+
+# ===========================
+# Uploads
+# ===========================
+uploads/
+
+# ===========================
+# Secrets / Certificates
+# ===========================
+*.pem
+*.key
+*.cert
+*.p12
+secrets/
+
+# ===========================
+# Docker
+# ===========================
+docker-compose.override.yml
+
+# ===========================
+# IDE & Editors
+# ===========================
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+.idea/
+*.suo
+*.sw?
+
+# ===========================
+# OS Files
+# ===========================
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# ===========================
+# Deployment
+# ===========================
+.env.production
+.env.staging
+.vercel
