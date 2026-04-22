@@ -9,6 +9,7 @@ export interface Product {
   category: string;
   description: string;
   isNew?: boolean;
+  nikePromo?: boolean;
   image: {
     url: string;
   };
