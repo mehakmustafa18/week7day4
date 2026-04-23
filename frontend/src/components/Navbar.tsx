@@ -70,6 +70,10 @@ export default function Navbar({ onSearch }: NavbarProps) {
           color: 'black',
           borderBottom: '1px solid #e0e0e0',
           zIndex: 1200,
+          left: 'auto',
+          right: 'auto',
+          width: '100%',
+          maxWidth: '1440px',
         }}
       >
         <Box sx={{ maxWidth: '1400px', width: '100%', mx: 'auto' }}>
